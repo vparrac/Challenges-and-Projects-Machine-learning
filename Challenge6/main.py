@@ -22,7 +22,7 @@ cost = lambda ypred, yreal : np.mean( ( ypred - yreal )**2 )
 costDev = lambda ypred, yreal: ypred-yreal
 
 
-nn = perceptron.createNeuralNet([30,1,1],[relu,relu,relu])
+nn = perceptron.createNeuralNet([30,10,1],[relu,relu,relu])
 #out= backpropagation.train(nn, np.array([1,1,1,1,2]), [1], cost, costDev, devRelu, learningRate=0.05, train=True )
 
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.2)
