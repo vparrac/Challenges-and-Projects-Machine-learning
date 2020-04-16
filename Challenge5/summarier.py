@@ -4,8 +4,8 @@ import csv
 from numpy import genfromtxt
 
 path = './results/validation'
-summary = open("summary.csv", "a")
-summary.write("af,loss,lr,nn,loss \n")
+summary = open("summaryTotal.csv", "a")
+summary.write("af,loss,lr,nn,loss,aca \n")
 
 
 files = [f for f in glob.glob(path + "**/**/*.csv", recursive=True)]
@@ -19,9 +19,9 @@ for f in files:
     nndot=document[idxnn].split(".")
     nn=nndot[0]
     f2 = genfromtxt(f,delimiter=',')[0]
-    st=document[idxaf]+","+document[idxlss]+","+document[idxlr]+","+nn+","+str(f2)+"\n"    
+    f3 = genfromtxt(f,delimiter=',')[1]
+    st=document[idxaf]+","+document[idxlss]+","+document[idxlr]+","+nn+","+str(f2)+","+str(f3)+"\n"
     summary.write(st)
-
 
 summary.close()  
 

@@ -4,7 +4,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras import optimizers
 from sklearn.metrics import confusion_matrix
-
+import os
+import glob
+import csv
+from numpy import genfromtxt
 X_train= genfromtxt('Xtrain.txt', delimiter=';')
 X_test= genfromtxt('Xtest.txt', delimiter=';')
 y_train= genfromtxt('Ytrain.txt', delimiter=';')
@@ -12,12 +15,14 @@ y_test= genfromtxt('ytest.txt', delimiter=';')
 
 # define the keras model
 model = Sequential()
+summary = open("summarySigmoid.csv", "w")
+summary.write("af,loss,lr,nn,loss,aca \n")
 
 epochNumber= 200
-activationFunctions= ['sigmoid','relu']
-learningRates=[0.0001,0.001,0.0001],
-loss=['mean_squared_error','binary_crossentropy']
-nn= [1,10,200,100,50]
+activationFunctions= ['sigmoid']
+learningRates=[0.001]
+loss=['mean_squared_error']
+nn= [1]
 for activation in activationFunctions:  
     for lr in learningRates:
         for l in loss:
@@ -34,7 +39,11 @@ for activation in activationFunctions:
                 loss_history = history_callback.history["loss"]
                 predictions = model.predict_classes(X_test)
                 accuracy = model.evaluate(X_test, y_test)
-                savetxt(pathTrainLoss,loss_history,delimiter=";")
-                savetxt(pathTrainAccuracy,accuracy_history,delimiter=";")
-                savetxt(pathAccuracy,accuracy,delimiter=";")             
+                print(history_callback.history["accuracy"])
+                print("#####################################################")
+                loss_history = history_callback.history["loss"]
+                print(loss_history)
+                print(activation+","+l+","+str(lr)+","+str(n)+","+str(accuracy[0])+","+str(accuracy[1]))
+                summary.write(activation+","+l+","+str(lr)+","+str(n)+","+str(accuracy[0])+"\n")
                 
+summary.close()
