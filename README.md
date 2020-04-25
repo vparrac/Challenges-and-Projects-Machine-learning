@@ -9,7 +9,7 @@ A challenge is a small activity that try to test the theoretical knowledge in a 
 4. Implementation stochastic gradient descent and linear regression
 5. Neuronal netwotks with _keras_
 6. Implementation of backpropation
-
+7. Implementation of SVM with _keras_
 
 ## Project
 The course had a total of three projects:
