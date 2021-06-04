@@ -8,9 +8,10 @@ A challenge is a small activity that try to test the theoretical knowledge in a 
 3. Linear regression with _sklearn_
 4. Implementation stochastic gradient descent and linear regression
 5. Neuronal netwotks with _keras_
-6. Implementation of backpropation
 7. Implementation of SVM with _keras_
+9. Learning with regularization
 
 ## Project
 The course had a total of three projects:
-1. Convolutional neuroal networks in a classification problem.
+1. Convolutional neuroal networks in Mario Bros levels classification problems
+2. Neuronal network with sleep human data
